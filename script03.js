@@ -17,6 +17,9 @@ function multiply(x, y){
 
 function divide(x, y){
     let quotient = x / y;
+    if(y === "0"){
+        quotient = "noSoup4u"
+    }
     return quotient;
 }
 
@@ -48,17 +51,61 @@ let decimalFlag = false;
 let operatorFlag = false;
 let tempOperatorFlag = false;
 let resultFlag = false;
+
 let btnId = "";
 let holder = '0';
 let lstBtn = "";
 let secondHolder = '0';
 let operation = "";
 let tempOperation = "";
+
 let calculator = document.getElementsByClassName('btn');
 let isNumber = null;
+
 let isOperator = null;
 let Numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'decimal'];
 let operators = ['divideBtn', 'multiplyBtn', 'subtractBtn', 'addBtn'];
+
+let selectedOperation = "";
+let holdButtonDown = function(){
+    if(operation === 'divideBtn'){
+        divideBtn.classList.add('selected');
+    }else if(operation !== 'divideBtn' || resultFlag === true){
+        divideBtn.classList.remove('selected');
+    }
+
+    if(operation ==='multiplyBtn'){
+        multiplyBtn.classList.add('selected');
+    }else if(operation !== 'multiplyBtn'){
+        multiplyBtn.classList.remove('selected');
+    }
+    
+    if(operation ==='subtractBtn'){
+        subtractBtn.classList.add('selected');
+    }else if(operation !== 'subtractBtn'){
+        subtractBtn.classList.remove('selected');
+    }
+
+    if(operation ==='addBtn'){
+        addBtn.classList.add('selected');
+    }else if(operation !== 'addBtn'){
+        addBtn.classList.remove('selected');
+    }
+
+    if(btnId === 'equalsBtn'){
+        divideBtn.classList.remove('selected');
+        multiplyBtn.classList.remove('selected');
+        subtractBtn.classList.remove('selected');
+        addBtn.classList.remove('selected');
+    }
+    
+    console.log({operation})
+    
+}
+
+
+
+
 function btnListener(){
     for(let i=0;i<calculator.length;i++){
         calculator[i].addEventListener('click', function(e){
@@ -123,7 +170,13 @@ function btnListener(){
                     console.log({holder, secondHolder, decimalFlag})
                 }
             }
+            if(operatorFlag === true){
+                holdButtonDown();
+            }else if(resultFlag === true){
+                holdButtonDown();
+            }
         });
+                
     }
 }
 
@@ -204,6 +257,7 @@ equalsBtn.addEventListener('click', function(){
         screen.innerHTML = holder;
         console.log({result, holder, secondHolder,})
     }
+    console.log({resultFlag})
 });
 
 divideBtn.addEventListener('click', function(){
@@ -274,7 +328,7 @@ multiplyBtn.addEventListener('click', function(){
         screen.innerHTML = holder;
         console.log({result, operation, tempOperation, tempOperatorFlag, decimalFlag});
     }
-        
+
 });
 
 subtractBtn.addEventListener('click', function(){
@@ -310,6 +364,8 @@ subtractBtn.addEventListener('click', function(){
         screen.innerHTML = holder;
         console.log({result, operation, tempOperation, tempOperatorFlag, decimalFlag});
     }
+
+
 });
 
 addBtn.addEventListener('click', function(){
@@ -348,6 +404,7 @@ addBtn.addEventListener('click', function(){
 })
 
 btnListener();
+
 
 function handleNumbers(){
     if(isNumber === true){
@@ -556,3 +613,6 @@ function whichNumber(){
     }
     console.log({numBtn})
 }
+
+
+
