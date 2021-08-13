@@ -58,6 +58,9 @@ body {
     opacity: 50%;
 }
 
+.selected{
+    opacity: 60%;
+}
 
 
 #rowOneContainer{
