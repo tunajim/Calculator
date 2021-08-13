@@ -99,6 +99,7 @@ let holdButtonDown = function(){
         addBtn.classList.remove('selected');
     }
     
+    
     console.log({operation})
     
 }
@@ -120,7 +121,7 @@ function btnListener(){
                     console.log({holder, secondHolder, decimalFlag})
                 } 
             }else if(Numbers.includes(btnId) && resultFlag === true && holder.includes(".") === false){
-                holder += "" + whichNumber().toString();
+                holder = whichNumber().toString();
                 secondHolder = "";
                 //resultFlag = false;
                 secondHolderFlag = false;
@@ -175,6 +176,13 @@ function btnListener(){
             }else if(resultFlag === true){
                 holdButtonDown();
             }
+            if(btnId === 'clearBtn'){
+                    divideBtn.classList.remove('selected');
+                    multiplyBtn.classList.remove('selected');
+                    subtractBtn.classList.remove('selected');
+                    addBtn.classList.remove('selected');
+
+                }
         });
                 
     }
