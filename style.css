@@ -55,6 +55,14 @@ body {
     font-size: 25px;
 }
 
+/*@media (max-width = '500px'){
+    .btn{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 25px;
+    }
+}*/
+
 .btn:active{
     opacity: 50%;
 }
