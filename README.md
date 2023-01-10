@@ -1,3 +1,3 @@
 # Calculator
 
-On screen [calculator](tunajim.github.io/Calculator) with html, css, and javascript!
+On screen [calculator](https://tunajim.github.io/Calculator) with html, css, and javascript!
